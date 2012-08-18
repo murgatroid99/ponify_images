@@ -14,6 +14,8 @@ BASE_URL = "http://api.tumblr.com/v2/blog/{blog}/posts/?offset={offset}&api_key=
 
 app = Flask(__name__)
 
+app.debug = True
+
 blogs = ("friendshipismagicgifs.tumblr.com", "mlp-gifs.tumblr.com", "animatedponies.tumblr.com", "pinkie-pie.tumblr.com")
 
 class Photo(object):
@@ -116,14 +118,14 @@ def get_image(width, height):
 
 @app.route("/bookmarklet")
 def get_bookmarklet():
-    with open("ponify.js") as ponify:
+    with open("/home/ubuntu/ponify_images/ponify.js") as ponify:
         output = "<h1>Ponify all images on a web page</h1>"
         output += "<p>The following link is a bookmarklet: drag it onto the bookmarks bar and then click it on any site</p>"
         output += '<p><a href="javascript:{}">Ponify Images</a></p>'
         output += "<p><pre><code>{}</code></pre></p>"
         raw = ponify.read()
         script = re.sub(r'\s*\n\s*', '', raw)
-        return output.format(cgi.escape(raw).replace('\n', '<br>'), script)
+        return output.format(script, cgi.escape(raw).replace('\n', '<br>'))
 
 if __name__ == "__main__":
     app.debug = True
