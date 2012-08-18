@@ -10,7 +10,7 @@
   }
   function requestImage(width, height, img, i){
     var req = new XMLHttpRequest();
-    req.open('GET', 'http://localhost:5000/image/'+width+'/'+height+'?cache='+Date.now()+''+i);
+    req.open('GET', 'http://23.21.123.100/image/'+width+'/'+height+'?cache='+Date.now()+''+i);
     req.onreadystatechange = getHandler(width, height, img, req);
     req.send();
   }
