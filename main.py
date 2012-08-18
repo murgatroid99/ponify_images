@@ -119,10 +119,11 @@ def get_bookmarklet():
     with open("ponify.js") as ponify:
         output = "<h1>Ponify all images on a web page</h1>"
         output += "<p>The following link is a bookmarklet: drag it onto the bookmarks bar and then click it on any site</p>"
-        output += "<p><pre><code>{0}</code></pre></p>"
-        output += '<p><a href="javascript:{0}">Ponify Images</a></p>'
-        script = re.sub(r'\s*\n\s*', '', ponify.read())
-        return output.format(script)
+        output += '<p><a href="javascript:{}">Ponify Images</a></p>'
+        output += "<p><pre><code>{}</code></pre></p>"
+        raw = ponify.read()
+        script = re.sub(r'\s*\n\s*', '', raw)
+        return output.format(cgi.escape(raw).replace('\n', '<br>'), script)
 
 if __name__ == "__main__":
     app.debug = True
