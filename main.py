@@ -99,6 +99,8 @@ def get_images(blog):
 
 blog_images = {blog: list(get_images(blog)) for blog in blogs}
 
+images = sum((blog_images[k] for k in blog_images), [])
+
 def get_closeness_measure(width, height):
     ratio = float(width)/float(height)
     def closeness(photo):
@@ -110,10 +112,9 @@ def get_closeness_measure(width, height):
 def get_image(width, height):
     if width<1 or height<1:
         return ''
-    blog = random.choice(blogs)
     closeness = get_closeness_measure(width, height)
-    images = sorted(blog_images[blog], key=closeness)
-    image_url = random.choice(images[:20]).url
+    images = sorted(images, key=closeness)
+    image_url = random.choice(images[:40]).url
     return image_url
 
 @app.route("/bookmarklet")
