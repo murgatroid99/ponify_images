@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, redirect
 import json
 import requests
 from bs4 import BeautifulSoup
@@ -127,6 +127,10 @@ def get_bookmarklet():
         raw = ponify.read()
         script = re.sub(r'\s*\n\s*', '', raw)
         return output.format(script, cgi.escape(raw).replace('\n', '<br>'))
+
+@app.route("/")
+def to_get_bookmarklet():
+    redirect("/bookmarklet")
 
 if __name__ == "__main__":
     app.debug = True
