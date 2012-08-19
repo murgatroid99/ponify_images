@@ -1,0 +1,14 @@
+<!doctype html>
+<head>
+  {% block head %}
+  <title>{% block title %}{% endblock %} - Image Ponify</title>
+  {% endblock %}
+</head>
+<body>
+  <div id="content">{% block content %}{% endblock %}</div>
+  <div id="footer">
+    {% block footer %}
+    Created by <a href="https://twitter.com/murgatroid99">Michael Lumish</a>.
+    {% endblock %}
+  </div>
+</body>

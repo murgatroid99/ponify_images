@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Bookmarklet{% endblock %}
+{% block content %}
+<h1>Image Ponify Bookmarklet</h1>
+<p>This script is a <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a>: drag it onto the bookmarks bar and then click it on any site to replace all of the pictures with pictures of ponies: <a href="javascript:{{ bookmarklet|safe }}">Image Ponify</a></p>
+<p>Below is the code that this bookmarklet will execute:</p>
+<p><pre><code>{{ source }}</code></pre></p>
+<p><a href="/">Back to the main page</a></p>
+{% endblock %}

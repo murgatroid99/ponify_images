@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<h1>Image Ponify</h1>
+<p>This is a simple script that replaces all of the pictures on a web page with pictures of ponies.<br>
+  You can get it by dragging this <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a> to your bookmark bar: <a href="javascript:{{ bookmarklet|safe }}">Ponify Images</a>. You can also <a href="/bookmarklet">click here</a> for the code that the bookmarklet will execute.
+</p>
+<h2>Details</h2>
+<p>For each image on the page, this script will ask this server for the URL of an image of approximately the same shape from tumblr. It currently gets images from the following tumblr blogs:
+  <ul>
+    {% for blog in blogs %}
+    <li><a href="http://{{blog}}">{{blog}}</a>
+    {% endfor %}
+  </ul>
+  If you have any suggestions for other blogs to add to the list, or anything else, please message me on twitter <a href="https://twitter.com/murgatroid99">@murgatroid99</a> or relpy to <a href="http://www.reddit.com/r/mylittlepony/comments/yg6cj/would_anyone_like_to_test_my_script_that_replaces/">the reddit post</a>.
+</p>
+<p>The source code is available <a href="https://github.com/murgatroid99/ponify_images">on Github</a>.</p>
+{% endblock content %}

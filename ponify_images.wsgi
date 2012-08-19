@@ -1,3 +1,4 @@
 import sys
-sys.path.insert(0, '/home/ubuntu/ponify_images')
-from main import app as application
+import os
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+from ponify import app as application

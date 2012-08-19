@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, redirect
+from flask import Flask, request, make_response, redirect, render_template
 import json
 import requests
 from bs4 import BeautifulSoup
@@ -8,13 +8,11 @@ import random
 import io
 import cgi
 import re
-from config import api_key
+import config
 
-BASE_URL = "http://api.tumblr.com/v2/blog/{blog}/posts/?offset={offset}&api_key=" + api_key
+BASE_URL = "http://api.tumblr.com/v2/blog/{blog}/posts/?offset={offset}&api_key=" + config.api_key
 
 app = Flask(__name__)
-
-app.debug = True
 
 blogs = ("friendshipismagicgifs.tumblr.com", "mlp-gifs.tumblr.com", "animatedponies.tumblr.com", "pinkie-pie.tumblr.com")
 
@@ -119,19 +117,16 @@ def get_image(width, height):
 
 @app.route("/bookmarklet")
 def get_bookmarklet():
-    with open("/home/ubuntu/ponify_images/ponify.js") as ponify:
-        output = "<h1>Ponify all images on a web page</h1>"
-        output += "<p>The following link is a bookmarklet: drag it onto the bookmarks bar and then click it on any site</p>"
-        output += '<p><a href="javascript:{}">Ponify Images</a></p>'
-        output += '<p>The following is the code that will be executed when you click the bookmarklet</p>'
-        output += "<p><pre><code>{}</code></pre></p>"
+    with open(config.script_loc) as ponify:
         raw = ponify.read()
         script = re.sub(r'\s*\n\s*', '', raw)
-        return output.format(script, cgi.escape(raw).replace('\n', '<br>'))
+        return render_template("bookmarklet.html", bookmarklet=script, source=raw)
 
 @app.route("/")
 def to_get_bookmarklet():
-    return redirect("/bookmarklet")
+    with open(config.script_loc) as ponify:
+        bookmarklet = re.sub(r'\s*\n\s*', '', ponify.read())
+        return render_template("index.html", bookmarklet=bookmarklet, blogs=blogs)
 
 if __name__ == "__main__":
     app.debug = True
