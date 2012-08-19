@@ -130,7 +130,7 @@ def get_bookmarklet():
 
 @app.route("/")
 def to_get_bookmarklet():
-    redirect("/bookmarklet")
+    return redirect("/bookmarklet")
 
 if __name__ == "__main__":
     app.debug = True
