@@ -123,6 +123,7 @@ def get_bookmarklet():
         output = "<h1>Ponify all images on a web page</h1>"
         output += "<p>The following link is a bookmarklet: drag it onto the bookmarks bar and then click it on any site</p>"
         output += '<p><a href="javascript:{}">Ponify Images</a></p>'
+        output += '<p>The following is the code that will be executed when you click the bookmarklet</p>'
         output += "<p><pre><code>{}</code></pre></p>"
         raw = ponify.read()
         script = re.sub(r'\s*\n\s*', '', raw)
