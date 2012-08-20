@@ -14,7 +14,7 @@ BASE_URL = "http://api.tumblr.com/v2/blog/{blog}/posts/?offset={offset}&api_key=
 
 app = Flask(__name__)
 
-blogs = ("friendshipismagicgifs.tumblr.com", "mlp-gifs.tumblr.com", "animatedponies.tumblr.com", "pinkie-pie.tumblr.com")
+blogs = ("friendshipismagicgifs.tumblr.com", "mlp-gifs.tumblr.com", "animatedponies.tumblr.com", "pinkie-pie.tumblr.com", "ask-thecrusaders.tumblr.com")
 
 class Photo(object):
     def __init__(self, width, height, url):
