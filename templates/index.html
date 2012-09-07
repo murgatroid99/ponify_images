@@ -3,8 +3,9 @@
 {% block content %}
 <h1>Image Ponify</h1>
 <p>This is a simple script that replaces all of the pictures on a web page with pictures of ponies.<br>
-  You can get it by dragging this <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a> to your bookmark bar: <a href="javascript:{{ bookmarklet|safe }}">Ponify Images</a>. You can also <a href="/bookmarklet">click here</a> for the code that the bookmarklet will execute.
+  You can get it by dragging this <a href="http://en.wikipedia.org/wiki/Bookmarklet">bookmarklet</a> to your bookmark bar: <a href="javascript:{{ bookmarklet|safe }}">Ponify Images</a>. You can also <a href="/bookmarklet">click here</a> for the code that the bookmarklet will execute. Below is an example of what this script could do to <a href="http://cnn.com">CNN.com</a>:
 </p>
+<p><a href="http://imgur.com/iTzXO"><img src="http://i.imgur.com/iTzXO.jpg" alt="" title="Screenshot of this script applied to cnn.com" /></a></p>
 <h2>Details</h2>
 <p>For each image on the page, this script will ask this server for the URL of an image of approximately the same shape from tumblr. It currently gets images from the following tumblr blogs:
   <ul>
